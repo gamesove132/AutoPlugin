@@ -11,7 +11,7 @@ public class NpcListener implements Listener {
     @EventHandler
     public void onInteract(PlayerInteractAtEntityEvent e) {
         if (!(e.getRightClicked() instanceof org.bukkit.entity.ArmorStand stand)) return;
-        Player p = (Player) e.getWhoClicked();
+        Player p = e.getPlayer(); // Ось так правильно отримувати гравця в PlayerInteractAtEntityEvent
         plugin.getNpcManager().onInteract(p, stand);
     }
 }
