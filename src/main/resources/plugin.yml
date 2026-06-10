@@ -1,0 +1,214 @@
+name: AutoPlugin
+version: 1.0.0
+main: me.auto.AutoPlugin
+api-version: '1.21'
+description: Auto Mine + Auto Forest + Auto Farm + Scoreboard + NPC
+authors: [AutoPlugin]
+depend: [Vault]
+softdepend: [Essentials, EssentialsX, LuckPerms]
+
+commands:
+  automine:
+    description: Авто-шахта
+    usage: /automine <create|delete|list|reload>
+    aliases: [am]
+  autoforest:
+    description: Авто-лісоруб
+    usage: /autoforest <create|delete|list|reload>
+    aliases: [af]
+  autofarm:
+    description: Авто-ферма
+    usage: /autofarm <create|delete|list|reload>
+    aliases: [afarm]
+  autoscoreboard:
+    description: Скорборд
+    usage: /autoscoreboard <show|hide|reload>
+    aliases: [asb]
+  autonpc:
+    description: NPC менеджер
+    usage: /autonpc <create|delete|skin|command|name|list>
+    aliases: [anpc]
+
+permissions:
+
+  # ── Мета-права ────────────────────────────────────────────────────
+  auto.admin:
+    description: Повний доступ до всього плагіну
+    default: op
+    children:
+      auto.mine.admin: true
+      auto.forest.admin: true
+      auto.farm.admin: true
+      auto.scoreboard.admin: true
+      auto.npc.admin: true
+
+  # ── Авто-шахта ────────────────────────────────────────────────────
+  auto.mine.admin:
+    description: Повний доступ до шахт
+    default: op
+    children:
+      auto.mine.create: true
+      auto.mine.delete: true
+      auto.mine.list: true
+      auto.mine.reload: true
+      auto.mine.use: true
+
+  auto.mine.create:
+    description: Створювати шахти
+    default: op
+
+  auto.mine.delete:
+    description: Видаляти шахти
+    default: op
+
+  auto.mine.list:
+    description: Переглядати список шахт
+    default: op
+
+  auto.mine.reload:
+    description: Перезавантажувати конфіг шахт
+    default: op
+
+  auto.mine.use:
+    description: Копати в авто-шахті
+    default: true
+
+  # ── Авто-ліс ──────────────────────────────────────────────────────
+  auto.forest.admin:
+    description: Повний доступ до лісів
+    default: op
+    children:
+      auto.forest.create: true
+      auto.forest.delete: true
+      auto.forest.list: true
+      auto.forest.reload: true
+      auto.forest.use: true
+
+  auto.forest.create:
+    description: Створювати ліси
+    default: op
+
+  auto.forest.delete:
+    description: Видаляти ліси
+    default: op
+
+  auto.forest.list:
+    description: Переглядати список лісів
+    default: op
+
+  auto.forest.reload:
+    description: Перезавантажувати конфіг лісів
+    default: op
+
+  auto.forest.use:
+    description: Рубати дерева в авто-лісі
+    default: true
+
+  # ── Авто-ферма ────────────────────────────────────────────────────
+  auto.farm.admin:
+    description: Повний доступ до ферм
+    default: op
+    children:
+      auto.farm.create: true
+      auto.farm.delete: true
+      auto.farm.list: true
+      auto.farm.reload: true
+      auto.farm.use: true
+
+  auto.farm.create:
+    description: Створювати ферми
+    default: op
+
+  auto.farm.delete:
+    description: Видаляти ферми
+    default: op
+
+  auto.farm.list:
+    description: Переглядати список ферм
+    default: op
+
+  auto.farm.reload:
+    description: Перезавантажувати конфіг ферм
+    default: op
+
+  auto.farm.use:
+    description: Збирати урожай на авто-фермі
+    default: true
+
+  # ── Скорборд ──────────────────────────────────────────────────────
+  auto.scoreboard.admin:
+    description: Повний доступ до скорборду
+    default: op
+    children:
+      auto.scoreboard.show: true
+      auto.scoreboard.hide: true
+      auto.scoreboard.reload: true
+
+  auto.scoreboard.show:
+    description: Показати скорборд
+    default: true
+
+  auto.scoreboard.hide:
+    description: Сховати скорборд
+    default: true
+
+  auto.scoreboard.reload:
+    description: Перезавантажити скорборд
+    default: op
+
+  # ── NPC ───────────────────────────────────────────────────────────
+  auto.npc.admin:
+    description: Повний доступ до NPC
+    default: op
+    children:
+      auto.npc.create: true
+      auto.npc.delete: true
+      auto.npc.skin: true
+      auto.npc.command: true
+      auto.npc.name: true
+      auto.npc.list: true
+
+  auto.npc.create:
+    description: Створювати NPC
+    default: op
+
+  auto.npc.delete:
+    description: Видаляти NPC
+    default: op
+
+  auto.npc.skin:
+    description: Встановлювати скін NPC
+    default: op
+
+  auto.npc.command:
+    description: Встановлювати команду NPC
+    default: op
+
+  auto.npc.name:
+    description: Перейменовувати NPC
+    default: op
+
+  auto.npc.list:
+    description: Переглядати список NPC
+    default: op
+
+  # ── Набори прав ───────────────────────────────────────────────────
+  auto.player:
+    description: Стандартні права гравця
+    default: true
+    children:
+      auto.mine.use: true
+      auto.forest.use: true
+      auto.farm.use: true
+      auto.scoreboard.show: true
+      auto.scoreboard.hide: true
+
+  auto.moderator:
+    description: Права модератора
+    default: false
+    children:
+      auto.player: true
+      auto.mine.list: true
+      auto.forest.list: true
+      auto.farm.list: true
+      auto.npc.list: true
